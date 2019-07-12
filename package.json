@@ -1,0 +1,47 @@
+{
+  "name": "5no-crypt",
+  "version": "1.0.0",
+  "description": "5no-crypt tools for Encrypt/Decrypt string",
+  "main": "compiled/index.js",
+  "scripts": {
+    "clean": "rm -rf compiled",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --fix --ext .ts src",
+    "build": "tsc",
+    "test": "mocha test",
+    "release": "yarn lint && yarn clean && yarn build"
+  },
+  "author": "reb2020",
+  "license": "MIT",
+  "keywords": [
+    "encrypt",
+    "decrypt",
+    "crypt",
+    "crypto",
+    "password",
+    "encryption",
+    "string-crypt",
+    "string-encrypt",
+    "string-decrypt"
+  ],
+  "homepage": "https://github.com/reb2020/5no-crypt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reb2020/5no-crypt.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "typescript": "^3.5.3",
+    "mocha": "^5.2.0",
+    "chai": "^4.2.0"
+  }
+}
