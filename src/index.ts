@@ -2,14 +2,13 @@ import stringToHex from './lib/stringToHex'
 import hexToString from './lib/hexToString'
 import encodeText from './lib/encode'
 import decodeText from './lib/decode'
-import cryptInterface from './interface'
 
-class Crypt {
+class Crypt implements CryptInterface.Crypt {
     private keyStr: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    private ord: cryptInterface.Ord = {}
-    private chr: cryptInterface.Chr = {}
-    private keys: cryptInterface.Keys = {}
-    private keysReverse: cryptInterface.KeysReverse = {}
+    private ord: CryptInterface.Ord = {}
+    private chr: CryptInterface.Chr = {}
+    private keys: CryptInterface.Keys = {}
+    private keysReverse: CryptInterface.KeysReverse = {}
     private text: string
     private salt: string
 
@@ -19,7 +18,7 @@ class Crypt {
 
       if (salt) {
         this.salt = Buffer.from(salt).toString('base64').replace(/[^a-zA-Z0-9]+/g, '')
-        let newStr: cryptInterface.KeysReverse = {}
+        let newStr: CryptInterface.KeysReverse = {}
         let index = 0
         for (let key of this.salt.split('')) {
           newStr[key] = index
@@ -76,7 +75,7 @@ class Crypt {
       const step = 3
       const strLen = newStr.length
 
-      const result = newStr.reduce((data: cryptInterface.ReduceData, current: string): cryptInterface.ReduceData => {
+      const result = newStr.reduce((data: CryptInterface.ReduceData, current: string): CryptInterface.ReduceData => {
         data.data.push(current)
         data.index++
 
@@ -92,7 +91,7 @@ class Crypt {
         allData: [],
       })
 
-      const newText = result.allData.map((block: cryptInterface.Block): string => encodeText(block.join(''), this.keys)).join('')
+      const newText = result.allData.map((block: CryptInterface.Block): string => encodeText(block.join(''), this.keys)).join('')
 
       return `${this.keys[index]}${newText}`
     }
@@ -105,7 +104,7 @@ class Crypt {
       let bHash: string = this.text.substr(1, this.text.length - 1).replace('_', '')
       let b = 0
 
-      const result = bHash.split('').reduce((data: cryptInterface.ReduceData, current: string): cryptInterface.ReduceData => {
+      const result = bHash.split('').reduce((data: CryptInterface.ReduceData, current: string): CryptInterface.ReduceData => {
         data.data[b] = `${(data.data[b] ? data.data[b] : '')}${current}`
         data.index++
 
@@ -127,4 +126,4 @@ class Crypt {
     }
 }
 
-module.exports = (text: string, salt: string = '') => new Crypt(text, salt)
+module.exports = (text: string, salt: string = ''): CryptInterface.Crypt => new Crypt(text, salt)

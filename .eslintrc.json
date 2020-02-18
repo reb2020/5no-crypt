@@ -22,7 +22,7 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-console": [2, { "allow": ["warn", "error"] }],
+    "no-console": [2, { "allow": ["warn", "error", "info"] }],
     "linebreak-style": [
       "error",
       "unix"

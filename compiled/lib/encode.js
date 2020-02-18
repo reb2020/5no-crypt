@@ -14,4 +14,3 @@ exports.default = (function (str, keys) {
     }
     return rez.join('');
 });
-//# sourceMappingURL=encode.js.map

@@ -6,4 +6,3 @@ exports.default = (function (num) {
     }
     return Number(num).toString(2);
 });
-//# sourceMappingURL=decbin.js.map

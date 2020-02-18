@@ -1,18 +1,18 @@
 
-5no-crypt tools for Encrypt/Decrypt string
+# <a href='https://5no.io'><img src='https://5no.io/img/5no-small-logo.png' height='100' alt='5no Logo' aria-label='5no.io' /></a>Encrypt/Decrypt string
 
 ## Install
 
-5no-crypt requires Node version 8 or a bove.
+@5no/crypt requires Node version 8 or a bove.
 
 ```sh
-npm install --save 5no-crypt
+npm install --save @5no/crypt
 ```
 
 ## Examples
 
 ```js
-const Crypt = require('5no-crypt')
+const Crypt = require('@5no/crypt')
 
 let encrypt = Crypt('hello world :)', '0.nc5.09213').encrypt()
 

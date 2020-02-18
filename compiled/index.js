@@ -116,4 +116,3 @@ module.exports = function (text, salt) {
     if (salt === void 0) { salt = ''; }
     return new Crypt(text, salt);
 };
-//# sourceMappingURL=index.js.map

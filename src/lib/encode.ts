@@ -1,8 +1,7 @@
 import decbin from './decbin'
 import bindec from './bindec'
-import cryptInterface from '../interface'
 
-export default (str: string, keys: cryptInterface.Keys): string => {
+export default (str: string, keys: CryptInterface.Keys): string => {
   let bstr: string = decbin(Number(str))
   const size: number = bstr.length
   const p = Math.ceil(size / 5)
