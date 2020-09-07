@@ -128,4 +128,4 @@ class Crypt implements CryptInterface.Crypt {
     }
 }
 
-export default Crypt
+export default (text: string, salt: string = ''): CryptInterface.Crypt => new Crypt(text, salt)
