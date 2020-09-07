@@ -1,9 +1,22 @@
 {
   "name": "@5no/crypt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "5no-crypt tools for Encrypt/Decrypt string",
   "main": "index.js",
   "types": "typings/index.d.ts",
+  "files": [
+    "index.js",
+    "typings/app.d.ts",
+    "typings/index.d.ts",
+    "lib/index.js",
+    "lib/index.d.ts",
+    "lib/lib/*.js",
+    "lib/lib/*.d.ts"
+  ],
+  "directories": {
+    "typings": "typings/",
+    "lib": "lib/"
+  },
   "scripts": {
     "clean": "rm -rf lib",
     "lint": "eslint --ext .ts src",
