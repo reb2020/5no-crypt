@@ -1,3 +1,5 @@
+import { CryptInterface } from '../typings/app'
+
 import stringToHex from './lib/stringToHex'
 import hexToString from './lib/hexToString'
 import encodeText from './lib/encode'
@@ -18,13 +20,13 @@ class Crypt implements CryptInterface.Crypt {
 
       if (salt) {
         this.salt = Buffer.from(salt).toString('base64').replace(/[^a-zA-Z0-9]+/g, '')
-        let newStr: CryptInterface.KeysReverse = {}
+        const newStr: CryptInterface.KeysReverse = {}
         let index = 0
-        for (let key of this.salt.split('')) {
+        for (const key of this.salt.split('')) {
           newStr[key] = index
           index++
         }
-        for (let key of this.keyStr.split('')) {
+        for (const key of this.keyStr.split('')) {
           newStr[key] = index
           index++
         }
@@ -32,7 +34,7 @@ class Crypt implements CryptInterface.Crypt {
       }
 
       let index = 0
-      for (let key of this.keyStr.split('')) {
+      for (const key of this.keyStr.split('')) {
         this.keys[index] = key
         this.keysReverse[key] = index
         index++
@@ -41,7 +43,7 @@ class Crypt implements CryptInterface.Crypt {
 
     private init(startIndex: number): void {
       let index = startIndex
-      for (let key of this.keyStr.split('')) {
+      for (const key of this.keyStr.split('')) {
         this.ord[key] = index
         this.chr[index] = key
         index++
@@ -49,8 +51,8 @@ class Crypt implements CryptInterface.Crypt {
     }
 
     private stringToOrd(text: string): Array<any> {
-      let newStr: Array<any> = []
-      for (let key of text.split('')) {
+      const newStr: Array<any> = []
+      for (const key of text.split('')) {
         newStr.push(this.ord[key])
       }
 
@@ -58,8 +60,8 @@ class Crypt implements CryptInterface.Crypt {
     }
 
     private stringToChr(text: string): Array<any> {
-      let newStr: Array<any> = []
-      let tArray = text.split('')
+      const newStr: Array<any> = []
+      const tArray = text.split('')
       for (let i = 0; i < tArray.length; i = i + 2) {
         newStr.push(this.chr[tArray[i] + tArray[i + 1]])
       }
@@ -101,7 +103,7 @@ class Crypt implements CryptInterface.Crypt {
       this.init(index)
 
       const step = 4
-      let bHash: string = this.text.substr(1, this.text.length - 1).replace('_', '')
+      const bHash: string = this.text.substr(1, this.text.length - 1).replace('_', '')
       let b = 0
 
       const result = bHash.split('').reduce((data: CryptInterface.ReduceData, current: string): CryptInterface.ReduceData => {
@@ -126,4 +128,4 @@ class Crypt implements CryptInterface.Crypt {
     }
 }
 
-module.exports = (text: string, salt: string = ''): CryptInterface.Crypt => new Crypt(text, salt)
+export default Crypt

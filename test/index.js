@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const Crypt = require('../compiled')
+const Crypt = require('../index')
 
 const expect = chai.expect
 
